@@ -23,3 +23,6 @@ steps:
   inputs:
     targetType: Inline
     script: ./azure-pipelines.ps1 -Toast
+  env:
+    APITOKEN: $(APITOKEN)
+    APIADDRESS: $(APIADDRESS)
