@@ -34,13 +34,13 @@ if($Test.IsPresent) {
 
 if($Toast.IsPresent) {
     $Body = @{
-        Build   = $env:Build.BuildNumber
-        Branch  = $env:Build.SourceBranchName
-        Project = $env:System.TeamProject
+        Build   = $env:BUILD_BUILDNUMBER
+        Branch  = $env:BUILD_SOURCEBRANCHNAME
+        Project = $env:SYSTEM_TEAMPROJECT
         Status  = $env:AGENT_JOBSTATUS
-        Commit  = $env:Build.SourceVersion
-        Owner   = $env:Build.QueuedBy
-        Uri     = $env:Build.BuildUri
+        Commit  = $env:BUILD_SOURCEVERSION
+        Owner   = $env:BUILD_QUEUEDBY
+        Uri     = $env:BUILD_BUILDURI
     }
 
     $Uri = 'http://{0}:8888/api/toast' -f $env:APIADDRESS
