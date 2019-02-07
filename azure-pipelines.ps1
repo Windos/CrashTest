@@ -34,12 +34,13 @@ if($Test.IsPresent) {
 
 if($Toast.IsPresent) {
     $Body = @{
-        Build   = $(Build.BuildNumber)
-        Project = $(System.TeamProject)
-        Status  = $(AGENT_JOBSTATUS)
-        Commit  = $(Build.SourceVersion)
-        Owner   = $(Build.QueuedBy)
-        Uri     = $(Build.BuildUri)
+        Build   = $env:Build.BuildNumber
+        Branch  = $env:Build.SourceBranchName
+        Project = $env:System.TeamProject
+        Status  = $env:AGENT_JOBSTATUS
+        Commit  = $env:Build.SourceVersion
+        Owner   = $env:Build.QueuedBy
+        Uri     = $env:Build.BuildUri
     }
-    Invoke-RestMethod -Headers @{ Authorization = "Bearer $(APITOKEN)" } -Uri "http://$(APIADDRESS):8888/api/toast" -Method 'POST' -Body $Body
+    Invoke-RestMethod -Headers @{ Authorization = "Bearer $($env:APITOKEN)" } -Uri "http://$($env:APIADDRESS):8888/api/toast" -Method 'POST' -Body $Body
 }
