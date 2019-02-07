@@ -43,5 +43,7 @@ if($Toast.IsPresent) {
         Uri     = $env:Build.BuildUri
     }
 
-    Invoke-RestMethod -Headers @{ Authorization = "Bearer $env:APITOKEN" } -Uri "http://$env:APIADDRESS:8888/api/toast" -Method 'POST' -Body $Body
+    $IPAddress = $env:APIADDRESS
+
+    Invoke-RestMethod -Headers @{ Authorization = "Bearer $env:APITOKEN" } -Uri "http://$IPAddress:8888/api/toast" -Method 'POST' -Body $Body
 }
