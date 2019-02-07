@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+steps:
+- task: PowerShell@2
+  displayName: 'Run Pester tests'
+  inputs:
+    targetType: Inline
+    script: ./azure-pipelines.ps1 -Bootstrap -Test
+
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  inputs:
+    testRunner: NUnit
+    testResultsFiles: '**/TestResults.xml'
+  condition: succeededOrFailed()
+
+- task: PowerShell@2
+  displayName: 'Toast me'
+  inputs:
+    targetType: Inline
+    script: ./azure-pipelines.ps1 -Toast
