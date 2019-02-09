@@ -40,7 +40,7 @@ if($Toast.IsPresent) {
         Status  = $env:AGENT_JOBSTATUS
         Commit  = $env:BUILD_SOURCEVERSION
         Owner   = $env:BUILD_QUEUEDBY
-        Uri     = $env:BUILD_BUILDURI
+        BuildId = $env:BUILD_BUILDID
     }
 
     $Uri = 'http://{0}:8888/api/toast' -f $env:APIADDRESS
