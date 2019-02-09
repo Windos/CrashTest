@@ -39,7 +39,7 @@ if($Toast.IsPresent) {
         Project = $env:SYSTEM_TEAMPROJECT
         Status  = $env:AGENT_JOBSTATUS
         Commit  = $env:BUILD_SOURCEVERSION
-        Owner   = $env:BUILD_QUEUEDBY
+        Owner   = $env:BUILD_REQUESTEDFOR
         BuildId = $env:BUILD_BUILDID
     }
 
